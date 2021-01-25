@@ -2,13 +2,14 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { throwError, Subject, Observable } from "rxjs";
 import { catchError, tap } from "rxjs/operators";
+import { environment } from './../../environments/environment';
 
 @Injectable({
   providedIn: "root",
 })
 export class WordService {
   private subject = new Subject();
-  private REST_API_SERVER = "http://localhost:8000/";
+  private REST_API_SERVER = environment.apiJDMUrl || "http://localhost:8000/";
   constructor(private httpClient: HttpClient) {}
 
   handleError(error: HttpErrorResponse) {
