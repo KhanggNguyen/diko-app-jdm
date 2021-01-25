@@ -87,6 +87,7 @@ app.get("/definition/:mot/:rel?", async (req, res) => {
   ).then((resultat) => {
     let data = resultat;
     data["definition"] = { def: def.text().trim().normalize() };
+    console.log("Received res");
     res.send(resultat);
   });
 });
