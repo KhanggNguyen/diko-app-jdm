@@ -56,7 +56,7 @@ export class WordResultComponent implements OnInit {
     });
   }
 
-  containsRelationType(rel: string) {
+  containsRelationType(rel) {
     let exists = false;
     this.rel_type.map((rt) => {
       if (rel == rt["rtid"]) exists = rel == rt["rtid"];
