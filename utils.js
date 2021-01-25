@@ -86,7 +86,7 @@ module.exports.getWordsFromMongoDB = (searchValue, client) => {
     let wordsCollection = dbObject.collection("words");
 
     wordsCollection
-      .find({ word: { $regex: motif } }, { sort: "word" })
+      .find({ name: { $regex: motif } }, { sort: "name" })
       .toArray(function (err, result) {
         if (err) throw err;
         resolve(result);
