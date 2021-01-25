@@ -427,7 +427,7 @@
     </div>
   </ng-container>
 
-  <ng-container *ngIf="words.length == 0">
+  <ng-container *ngIf="words.length == 0 && !isLoading">
     <p>Pas de résultat possible pour cette motif</p>
   </ng-container>
 </div>
