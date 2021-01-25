@@ -24,7 +24,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
 // Serve only the static files form the dist directory
-app.use(express.static('./dist/jdm-app'));
+var distDir = __dirname + "/dist/";
+app.use(express.static(distDir));
 
 const MongoClient = require("mongodb").MongoClient;
 const uri = process.env.MONGOLAB_URI;
