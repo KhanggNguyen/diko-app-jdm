@@ -153,13 +153,13 @@ app.get("/list/refinement", async (req, res) => {
 
 app.get("/search", async (req, res) => {
   let searchValue = req.query.searchValue;
-  console.log(searchValue);
+  console.log("/search?searchValue=" + searchValue);
   let words = [];
   if (searchValue) {
     words = await getWordsFromMongoDB(searchValue, client);
   }
+  console.log("length" + words.length);
   if (words.length > 0) {
-    console.log(words.length);
     res.send(words);
   } else {
     return res.status(404).json({
