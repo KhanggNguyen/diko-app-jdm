@@ -80,16 +80,8 @@ module.exports.requestToGetBodyAsync = async (url) => {
 };
 
 module.exports.getWordsFromMongoDB = (searchValue, client) => {
-  let motif = searchValue.replace("#", ".*");
-  if(searchValue.indexOf("#") == 0){
-    motif = motif + "$";
-  }else if(searchValue.indexOf("#") == searchValue.length){
-    motif = "^" + motif;
-  }else{
-    motif = "^" + motif + "$";
-  }
-  
-  console.log(searchValue);
+  let motif = "^" + searchValue + ".*";
+
   return new Promise((resolve) => {
     let dbObject = client.db("Jdm");
     let wordsCollection = dbObject.collection("words");

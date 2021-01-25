@@ -49,7 +49,14 @@ module.exports.parserWordsList = (mot) => {
 };
 
 module.exports.parserWordsListMongoDB = (mot, client) => {
-  let motif = mot.replace("#", ".*");
+  let motif = searchValue.replace("#", ".*");
+  if(searchValue.indexOf("#") == 0){
+    motif = motif + "$";
+  }else if(searchValue.indexOf("#") == searchValue.length){
+    motif = "^" + motif;
+  }else{
+    motif = "^" + motif + "$";
+  }
   return new Promise((resolve) => {
     let dbObject = client.db("Jdm");
     let wordsCollection = dbObject.collection("words");
