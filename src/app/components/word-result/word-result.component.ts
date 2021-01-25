@@ -14,6 +14,7 @@ export class WordResultComponent implements OnInit {
   rel_type = [];
   ent_type = [];
   definition;
+  isLoading = true;
   constructor(
     private wordService: WordService,
     private route: ActivatedRoute,
@@ -36,6 +37,7 @@ export class WordResultComponent implements OnInit {
             this.ent_type = data["entite_type"];
             this.definition = data["definition"]["def"];
             this.wordService.sendMessage(data);
+            this.isLoading = false;
           });
       }
     });
@@ -51,6 +53,7 @@ export class WordResultComponent implements OnInit {
             this.ent_type = data["entite_type"];
             this.definition = data["definition"]["def"];
             this.wordService.sendMessage(data);
+            this.isLoading = false;
           });
       }
     });
