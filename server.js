@@ -170,5 +170,5 @@ app.get('/*', (req, res) =>
 );
 
 app.listen(port, /*host,*/ () => {
-  console.log(`Le serveur demarre sur ${host}:${port}`);
+  console.log(`Le serveur demarre sur ${port}`);
 });
