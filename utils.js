@@ -81,6 +81,7 @@ module.exports.requestToGetBodyAsync = async (url) => {
 
 module.exports.getWordsFromMongoDB = (searchValue, client) => {
   let motif = "^" + searchValue + ".*";
+  console.log(searchValue);
   return new Promise((resolve) => {
     let dbObject = client.db("Jdm");
     let wordsCollection = dbObject.collection("words");
