@@ -164,7 +164,7 @@ app.get("/search", async (req, res) => {
   } else {
     return res.status(404).json({
       status: 404,
-      message: "Impossible de se connecter à la base de données",
+      message: "Impossible de récupérer de la base de données",
     });
   }
 });
