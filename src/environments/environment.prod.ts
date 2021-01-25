@@ -1,4 +1,4 @@
 export const environment = {
-  apiJDMUrl: 'https://diko-app.herokuapp.com/',
+  apiJDMUrl: '/',
   production: true
 };
