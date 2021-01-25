@@ -169,6 +169,6 @@ app.get('/*', (req, res) =>
     res.sendFile('index.html', {root: './dist/jdm-app/'}),
 );
 
-app.listen(port, host, () => {
+app.listen(port, /*host,*/ () => {
   console.log(`Le serveur demarre sur ${host}:${port}`);
 });
