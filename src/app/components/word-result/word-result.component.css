@@ -1,0 +1,22 @@
+div.button-collapse button {
+  margin: 0.3rem;
+}
+
+div.box {
+  margin-bottom: 10px;
+}
+
+.btn {
+  color: #fff;
+  background-color: #f194e5;
+  border-color: white;
+}
+
+.btn[aria-expanded="true"] {
+  color: #fff;
+  background-color: #fa39e0;
+}
+
+.box a {
+    display:inline;
+}

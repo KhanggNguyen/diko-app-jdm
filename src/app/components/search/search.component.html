@@ -1,0 +1,37 @@
+<form
+  (ngSubmit)="onSubmit(searchForm)"
+  #searchForm="ngForm"
+  class="form-inline my-2 my-lg-0"
+>
+  <mat-form-field class="mat-form-field">
+    <mat-label>Option de recherche</mat-label>
+    <mat-select [(ngModel)]="searchOption" name="searchOption" [(value)]="defaultOption">
+      <mat-option *ngFor="let option of searchOptions" [value]="option.r_id">
+        {{ option.label }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <input
+    id="search"
+    name="searchValue"
+    type="text"
+    [(ngModel)]="searchValue"
+    (ngModelChange)="onChange($event)"
+    placeholder="Recherche"
+    #search="ngModel"
+    class="form-control mr-sm-2"
+    aria-label="Search"
+    matInput
+    [matAutocomplete]="auto"
+  />
+  <mat-autocomplete #auto="matAutocomplete">
+    <mat-option *ngFor="let word of words" [value]="word.word">
+      {{ word.word }}
+    </mat-option>
+  </mat-autocomplete>
+  <!-- </mat-form-field> -->
+  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+    Recherche
+  </button>
+</form>
