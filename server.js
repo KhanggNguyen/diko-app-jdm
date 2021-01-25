@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const path = require('path');
 const bodyParser = require("body-parser");
 const cheerio = require("cheerio");
 const {
@@ -24,8 +25,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
 // Serve only the static files form the dist directory
-var distDir = __dirname + "/dist/";
-app.use(express.static(distDir));
+app.use(express.static('./dist/jdm-app'));
 
 const MongoClient = require("mongodb").MongoClient;
 const uri = process.env.MONGOLAB_URI;
@@ -166,7 +166,7 @@ let port = process.env.PORT || 8000;
 let host = process.env.HOST;
 
 app.get('/*', (req, res) =>
-    res.sendFile('index.html', {root: 'dist/jdm-app/'}),
+    res.sendFile('index.html', {root: './dist/jdm-app/'}),
 );
 
 app.listen(port, host, () => {
