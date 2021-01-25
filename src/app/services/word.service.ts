@@ -50,7 +50,7 @@ export class WordService {
   }
 
   public getWords(searchValue: string){
-    return this.httpClient.get(this.REST_API_SERVER + "search/", {params: {searchValue: searchValue}}).pipe(
+    return this.httpClient.get(this.REST_API_SERVER + "search", {params: {searchValue: searchValue}}).pipe(
       tap((data: []) => {
         catchError(this.handleError);
       })

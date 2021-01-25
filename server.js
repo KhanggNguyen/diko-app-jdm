@@ -163,7 +163,7 @@ app.get("/search", async (req, res) => {
 });
 
 let port = process.env.PORT || 8000;
-let host = process.env.HOST;
+//let host = process.env.HOST;
 
 app.get('/*', (req, res) =>
     res.sendFile('index.html', {root: './dist/jdm-app/'}),
