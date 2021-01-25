@@ -26,8 +26,8 @@
     [matAutocomplete]="auto"
   />
   <mat-autocomplete #auto="matAutocomplete">
-    <mat-option *ngFor="let word of words" [value]="word.word">
-      {{ word.word }}
+    <mat-option *ngFor="let word of words" [value]="word.name">
+      {{ word.name }}
     </mat-option>
   </mat-autocomplete>
   <!-- </mat-form-field> -->

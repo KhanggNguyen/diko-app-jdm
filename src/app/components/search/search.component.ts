@@ -77,7 +77,7 @@ export class SearchComponent implements OnInit {
           this.words = data;
         });
       }
-    },0);
+    },400);
     
   }
 

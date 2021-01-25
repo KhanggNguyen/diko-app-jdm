@@ -158,7 +158,7 @@ app.get("/search", async (req, res) => {
   if (searchValue) {
     words = await getWordsFromMongoDB(searchValue, client);
   }
-  console.log("length" + words.length);
+  
   if (words.length > 0) {
     res.send(words);
   } else {
