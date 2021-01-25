@@ -28,7 +28,7 @@ app.use(cors());
 app.use(express.static('./dist/jdm-app'));
 
 const MongoClient = require("mongodb").MongoClient;
-const uri = process.env.MONGOLAB_URI;
+const uri = process.env.MONGOLAB_URI || "mongodb+srv://root:rwEF3zRGYYJKfCZh@cluster0.phigy.mongodb.net/Jdm?retryWrites=true&w=majority";
 const client = new MongoClient(
   uri,
   { useUnifiedTopology: true },
@@ -37,7 +37,14 @@ const client = new MongoClient(
   { keepAlive: 1 }
 );
 
-client.connect();
+client.connect(function(err, client){
+  if (err) {
+    console.log(err);
+    process.exit(1);
+  }
+
+  console.log("Database connection ready");
+});
 
 app.get("/definition/:mot/:rel?", async (req, res) => {
   let mot = req.params.mot;
