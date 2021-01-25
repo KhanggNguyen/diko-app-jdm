@@ -49,10 +49,10 @@ module.exports.parserWordsList = (mot) => {
 };
 
 module.exports.parserWordsListMongoDB = (mot, client) => {
-  let motif = searchValue.replace("#", ".*");
-  if(searchValue.indexOf("#") == 0){
+  let motif = mot.replace("#", ".*");
+  if(mot.indexOf("#") == 0){
     motif = motif + "$";
-  }else if(searchValue.indexOf("#") == searchValue.length){
+  }else if(mot.indexOf("#") == mot.length){
     motif = "^" + motif;
   }else{
     motif = "^" + motif + "$";
