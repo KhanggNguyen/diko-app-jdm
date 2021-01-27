@@ -24,6 +24,8 @@ export class WordResultComponent implements OnInit {
   ngOnInit() {
     let motif = "";
     let rel = "";
+    
+    $(".container").clear();
 
     this.route.queryParams.subscribe((params) => {
       if (params.word && params.rel) {
