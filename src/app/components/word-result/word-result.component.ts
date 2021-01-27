@@ -14,6 +14,7 @@ export class WordResultComponent implements OnInit {
   rel_type = [];
   ent_type = [];
   definition;
+  eid;
   isLoading = true;
   constructor(
     private wordService: WordService,
@@ -24,9 +25,6 @@ export class WordResultComponent implements OnInit {
   ngOnInit() {
     let motif = "";
     let rel = "";
-    
-    $(".container").clear();
-
     this.route.queryParams.subscribe((params) => {
       if (params.word && params.rel) {
         motif = params.word;
@@ -34,12 +32,14 @@ export class WordResultComponent implements OnInit {
         this.wordService
           .sendGetRequest(params.word, params.rel)
           .subscribe((data: []) => {
+            this.eid = data["eid"].eid;
             this.words = data["rel"];
             this.rel_type = data["rel_type"];
             this.ent_type = data["entite_type"];
             this.definition = data["definition"]["def"];
             this.wordService.sendMessage(data);
             this.isLoading = false;
+            
           });
       }
     });
@@ -50,6 +50,7 @@ export class WordResultComponent implements OnInit {
         this.wordService
           .sendGetRequest(params["word"], "")
           .subscribe((data: []) => {
+            this.eid = data["eid"].eid;
             this.words = data["rel"];
             this.rel_type = data["rel_type"];
             this.ent_type = data["entite_type"];
@@ -78,15 +79,40 @@ export class WordResultComponent implements OnInit {
     return hasWeightPositive;
   }
 
+  getNameFromEid(r_node2: string): string{
+    let name = "";
+    this.ent_type.map( (et) => {
+      if(et["eid"] == r_node2 && et["name"]){
+        name = et["name"];
+      }
+    });
+    return name;
+  }
+
+  getFormatedNameFromEid(r_node2: string): string{
+    let name = "";
+    this.ent_type.map( (et) => {
+      if(et["eid"] == r_node2 && et["formated_name"]){
+        if(this.requireFormatedName(et["name"])){
+          name = et["formated_name"];
+        }else{
+          name = et["name"];
+        }
+      }
+    });
+    return name;
+  }
+
   requireFormatedName(entite: string) {
     return /\d/.test(entite);
   }
 
-  convertToFormatedName(entite: string) {
-    let formated_name = entite;
+  convertToFormatedName(r_node2: string) : string{
+    let name = this.getNameFromEid(r_node2);
+    let formated_name = this.getFormatedNameFromEid(r_node2);
     this.ent_type.map((rt) => {
       let str = rt["name"];
-      if (str == entite && rt["formated_name"]) {
+      if (str == name && rt["formated_name"]) {
         formated_name = rt["formated_name"].substring(
           1,
           rt["formated_name"].length - 1
@@ -96,11 +122,12 @@ export class WordResultComponent implements OnInit {
     return formated_name;
   }
 
-  parserFormatedName(entite: string) {
-    let formatedName = entite;
+  parserFormatedName(r_node2: string) {
+    let name = this.getNameFromEid(r_node2);
+    let formatedName = this.getFormatedNameFromEid(r_node2);
     this.ent_type.map((rt) => {
       let str = rt["name"];
-      if (str == entite && rt["formated_name"]) {
+      if (str == name && rt["formated_name"]) {
         formatedName = rt["formated_name"].substring(
           1,
           rt["formated_name"].length - 1
@@ -121,7 +148,8 @@ export class WordResultComponent implements OnInit {
     return formatedName;
   }
 
-  parserCategoryName(name: string) {
+  parserCategoryName(r_node2: string) {
+    let name = this.getNameFromEid(r_node2);
     let newName = name.replace(/:/g, " ");
     newName = newName.replace(/Ver/g, "Verbe");
     newName = newName.replace(/Adj/g, "Adjectif");

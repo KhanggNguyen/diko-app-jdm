@@ -155,9 +155,9 @@
                   <p
                     data-toggle="tooltip"
                     data-placement="top"
-                    title="id: {{ word.id_src }}, poids: {{ word.poids }}"
+                    title="id: {{ word.r_node2 }}, poids: {{ word.poids }}"
                   >
-                    {{ parserCategoryName(word.entite) }}<br />
+                    {{ parserCategoryName(word.r_node2) }}<br />
                   </p>
                 </ng-container>
               </ng-container>
@@ -178,7 +178,7 @@
                 >
                   <ng-container
                     *ngIf="
-                      !requireFormatedName(word.entite);
+                      !requireFormatedName(getNameFromEid(word.r_node2));
                       then if_block;
                       else else_block
                     "
@@ -187,24 +187,24 @@
                     <a
                       [routerLink]="[
                         '/find/definition/',
-                        convertToFormatedName(word.entite)
+                        convertToFormatedName(word.r_node2)
                       ]"
                       data-toggle="tooltip"
                       data-placement="top"
-                      title="id: {{ word.id_src }}, poids: {{ word.poids }}"
-                      >{{ word.entite }} <br
+                      title="id: {{ word.r_node2 }}, poids: {{ word.poids }}"
+                      >{{ word.r_node2 }} <br
                     /></a>
                   </ng-template>
                   <ng-template #else_block>
                     <a
                       [routerLink]="[
                         '/find/definition/',
-                        convertToFormatedName(word.entite)
+                        convertToFormatedName(word.r_node2)
                       ]"
                       data-toggle="tooltip"
                       data-placement="top"
-                      title="id: {{ word.id_src }}, poids: {{ word.poids }}"
-                      >{{ parserFormatedName(word.entite) }} <br
+                      title="id: {{ word.r_node2 }}, poids: {{ word.poids }}"
+                      >{{ parserFormatedName(word.r_node2) }} <br
                     /></a>
                   </ng-template>
                 </ng-container>
@@ -226,7 +226,7 @@
                 >
                   <ng-container
                     *ngIf="
-                      !requireFormatedName(word.entite);
+                      !requireFormatedName(word.r_node2);
                       then if_block;
                       else else_block
                     "
@@ -235,24 +235,24 @@
                     <a
                       [routerLink]="[
                         '/find/definition/',
-                        convertToFormatedName(word.entite)
+                        convertToFormatedName(word.r_node2)
                       ]"
                       data-toggle="tooltip"
                       data-placement="top"
-                      title="id: {{ word.id_src }}, poids: {{ word.poids }}"
-                      >{{ word.entite }} <br
+                      title="id: {{ word.r_node2 }}, poids: {{ word.poids }}"
+                      >{{ word.r_node2 }} <br
                     /></a>
                   </ng-template>
                   <ng-template #else_block>
                     <a
                       [routerLink]="[
                         '/find/definition/',
-                        convertToFormatedName(word.entite)
+                        convertToFormatedName(word.r_node2)
                       ]"
                       data-toggle="tooltip"
                       data-placement="top"
-                      title="id: {{ word.id_src }}, poids: {{ word.poids }}"
-                      >{{ parserFormatedName(word.entite) }} <br
+                      title="id: {{ word.r_node2 }}, poids: {{ word.poids }}"
+                      >{{ parserFormatedName(word.r_node2) }} <br
                     /></a>
                   </ng-template>
                 </ng-container>
@@ -274,9 +274,9 @@
                 <p
                   data-toggle="tooltip"
                   data-placement="top"
-                  title="id: {{ word.id_src }}, poids: {{ word.poids }}"
+                  title="id: {{ word.r_node2 }}, poids: {{ word.poids }}"
                 >
-                  {{ word.entite }} <br />
+                  {{ getNameFromEid(word.r_node2) }} <br />
                 </p>
               </ng-container>
             </ng-container>
@@ -296,9 +296,9 @@
                 <p
                   data-toggle="tooltip"
                   data-placement="top"
-                  title="id: {{ word.id_src }}, poids: {{ word.poids }}"
+                  title="id: {{ word.r_node2 }}, poids: {{ word.poids }}"
                 >
-                  {{ word.entite }} <br />
+                  {{ getNameFromEid(word.r_node2) }} <br />
                 </p>
               </ng-container>
             </ng-container>
@@ -318,9 +318,9 @@
                 <p
                   data-toggle="tooltip"
                   data-placement="top"
-                  title="id: {{ word.id_src }}, poids: {{ word.poids }}"
+                  title="id: {{ word.r_node2 }}, poids: {{ word.poids }}"
                 >
-                  {{ word.entite }} <br />
+                  {{ getNameFromEid(word.r_node2) }} <br />
                 </p>
               </ng-container>
             </ng-container>
@@ -340,9 +340,9 @@
                 <p
                   data-toggle="tooltip"
                   data-placement="top"
-                  title="id: {{ word.id_src }}, poids: {{ word.poids }}"
+                  title="id: {{ word.r_node2 }}, poids: {{ word.poids }}"
                 >
-                  {{ word.entite }}
+                  {{ getNameFromEid(word.r_node2) }}
                 </p>
               </ng-container>
             </ng-container>
@@ -362,12 +362,12 @@
                 <a
                   [routerLink]="[
                     '/find/definition/',
-                    convertToFormatedName(word.entite)
+                    convertToFormatedName(word.r_node2)
                   ]"
                   data-toggle="tooltip"
                   data-placement="top"
-                  title="id: {{ word.id_src }}, poids: {{ word.poids }}"
-                  >{{ parserFormatedName(word.entite) }}
+                  title="id: {{ word.r_node2 }}, poids: {{ word.poids }}"
+                  >{{ parserFormatedName(word.r_node2) }}
                 </a>
               </ng-container>
             </ng-container>
@@ -387,12 +387,12 @@
                 <a
                   [routerLink]="[
                     '/find/definition/',
-                    convertToFormatedName(word.entite)
+                    convertToFormatedName(word.r_node2)
                   ]"
                   data-toggle="tooltip"
                   data-placement="top"
-                  title="id: {{ word.id_src }}, poids: {{ word.poids }}"
-                  >{{ parserFormatedName(word.entite) }}
+                  title="id: {{ word.r_node2 }}, poids: {{ word.poids }}"
+                  >{{ getNameFromEid(word.r_node2) }}
                 </a>
               </ng-container>
             </ng-container>
@@ -412,12 +412,12 @@
                 <a
                   [routerLink]="[
                     '/find/definition/',
-                    convertToFormatedName(word.entite)
+                    convertToFormatedName(word.r_node2)
                   ]"
                   data-toggle="tooltip"
                   data-placement="top"
-                  title="id: {{ word.id_src }}, poids: {{ word.poids }}"
-                  >{{ parserFormatedName(word.entite) }}
+                  title="id: {{ word.r_node2 }}, poids: {{ word.poids }}"
+                  >{{ parserFormatedName(word.r_node2) }}
                 </a>
               </ng-container>
             </ng-container>

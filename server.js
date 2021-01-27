@@ -60,10 +60,13 @@ app.get("/definition/:mot/:rel?", async (req, res) => {
   let code = $("code");
   let def = $("def");
   let array_string = code.text().split("\n");
-
+  let eid = array_string[1].substring(
+    array_string[1].lastIndexOf("=")+1,
+    array_string[1].lastIndexOf(")")
+  );
   for (i = 0; i < array_string.length; i++) {
     array_temp = array_string[i].split(";");
-
+    
     if (array_temp[0] == "e") {
       //e;eid;'name';type;w;'formated name'
       array_entite.push(array_temp);
@@ -83,9 +86,10 @@ app.get("/definition/:mot/:rel?", async (req, res) => {
     array_relation,
     array_entite,
     array_relation_type,
-    mot
+    eid
   ).then((resultat) => {
     let data = resultat;
+    data["eid"] = {eid};
     data["definition"] = { def: def.text().trim().normalize() };
     console.log("Received res");
     res.send(resultat);
@@ -115,7 +119,10 @@ app.get("/list/refinement", async (req, res) => {
   let $ = cheerio.load(body);
   let code = $("code");
   let array_string = code.text().split("\n");
-
+  let eid = array_string[1].substring(
+    array_string[1].lastIndexOf("=")+1,
+    array_string[1].lastIndexOf(")")
+  );
   let array_relation = [],
     array_entite = [],
     array_relation_type = [];
@@ -143,7 +150,7 @@ app.get("/list/refinement", async (req, res) => {
     array_relation,
     array_entite,
     array_relation_type,
-    mot
+    eid
   ).then((resultat) => {
     res.send(resultat);
     console.log("renvoyé resultat");

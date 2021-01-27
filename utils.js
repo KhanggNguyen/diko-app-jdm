@@ -6,7 +6,7 @@ module.exports.getRelationsAsync = (
   array_relation,
   array_entite,
   array_relation_type,
-  mot
+  eid
 ) => {
   return new Promise((resolve) => {
     let data = {};
@@ -18,47 +18,53 @@ module.exports.getRelationsAsync = (
     data[entite_type] = [];
 
     array_entite.map(function (item) {
-      let entite = {
-        eid: item[1],
-        name: item[2].replace(/'/g, ""),
-        type: item[3],
-        w: item[4],
-        formated_name: item[5],
-      };
-      data[entite_type].push(entite);
+      if(!(item[2] == "_COM")){
+        let entite = {
+          eid: item[1],
+          name: item[2].replace(/'/g, ""),
+          type: item[3],
+          w: item[4],
+          formated_name: item[5],
+        };
+        data[entite_type].push(entite);
+      }
+      
     });
 
     array_relation_type.map(function (item) {
       let relation_type = {
         rt: item[0],
         rtid: item[1],
-        trname: item[2],
-        trgpname: item[3],
+        trname: item[2].replace(/'/g, ""),
+        trgpname: item[3].replace(/'/g, ""),
         rthelp: item[4],
       };
       data[rel_type].push(relation_type);
     });
 
     array_relation.map(function (item) {
-      for (j = 0; j < array_entite.length; j++) {
-        let name = array_entite[j][2].replace(/'/g, "");
-        if (
-          /*item[2] == array_entite[j][1] ||*/ item[3] == array_entite[j][1] &&
-          name != mot && !containsRelationAlready(item[2], item[3], item[4], data[rel]) && 
-          Number(item[5]) > 0
-        ) {
+      //for (j = 0; j < array_entite.length; j++) {
+      //  let name = array_entite[j][2].replace(/'/g, "");
+      //  if (
+      //    /*item[2] == array_entite[j][1] ||*/ item[3] == array_entite[j][1] &&
+      //    name != mot && !containsRelationAlready(item[2], item[3], item[4], data[rel]) && 
+      //    Number(item[5]) > 0
+      //  ) {
+        if(item[2] == eid){
           let relation = {
             r_id: item[1],
             r_node1: item[2],
             r_node2: item[3],
-            id_src: array_entite[j][1],
-            entite: name,
+            //id_src: array_entite[j][1],
+            //entite: name,
             r_type: item[4],
             poids: Number(item[5]),
           };
           data[rel].push(relation);
         }
-      }
+          
+      //  }
+      //}
     });
 
     resolve(data);
