@@ -9,7 +9,7 @@ import { environment } from './../../environments/environment';
 })
 export class WordService {
   private subject = new Subject();
-  private REST_API_SERVER = environment.apiJDMUrl || "/";
+  private REST_API_SERVER = /* environment.apiJDMUrl || */ "/";
   constructor(private httpClient: HttpClient) {}
 
   handleError(error: HttpErrorResponse) {
