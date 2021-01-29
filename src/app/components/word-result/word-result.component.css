@@ -27,3 +27,6 @@ div.box {
   place-items: center;
 }
 
+.box p {
+  margin-bottom: 0;
+}
