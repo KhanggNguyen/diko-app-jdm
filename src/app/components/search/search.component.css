@@ -2,3 +2,12 @@
     width: 20rem !important;
     margin-right:1rem !important;
 }
+
+.search-btn{
+    color: #000000;
+    border-color: #000000;
+}
+
+.search-btn:hover{
+    background-color: #ff6cf8;
+}

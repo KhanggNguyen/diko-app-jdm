@@ -18,7 +18,7 @@ module.exports.getRelationsAsync = (
     data[entite_type] = [];
 
     array_entite.map(function (item) {
-      if(!(item[2] == "_COM")){
+      if((item[2].replace(/'/g,"") != "_COM")){
         let entite = {
           eid: item[1],
           name: item[2].replace(/'/g, ""),
@@ -94,6 +94,7 @@ module.exports.getWordsFromMongoDB = (searchValue, client) => {
 
     wordsCollection
       .find({ name: { $regex: motif } }, { sort: "name" })
+      .limit(10)
       .toArray(function (err, result) {
         if (err) throw err;
         resolve(result);
