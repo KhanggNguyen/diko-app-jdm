@@ -8,13 +8,26 @@ div.box {
 
 .btn {
   color: #fff;
-  background-color: #f194e5;
+  background-color: #ff83ee;
   border-color: white;
 }
 
 .btn[aria-expanded="true"] {
-  color: #fff;
-  background-color: #fa39e0;
+  color: #000000;
+  background-color: #f765a9;
+}
+
+.btn:focus{
+  background-color: #f85de3;
+  outline:0;
+  color:black;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active{
+  background-color: #e633ce;
+  color:black;
+  outline: 0;
+  box-shadow: 0 0 0 0;
 }
 
 .box a {

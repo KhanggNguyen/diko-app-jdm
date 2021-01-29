@@ -9,5 +9,11 @@
 }
 
 .search-btn:hover{
-    background-color: #ff6cf8;
+    background-color: #f79595;
+}
+
+.search-btn:focus{
+    background-color: #ffa6ec;
+    outline: 0;
+    box-shadow: 0 0 0 0;
 }
