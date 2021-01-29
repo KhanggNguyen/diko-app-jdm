@@ -14,7 +14,7 @@
           type="button"
           data-toggle="collapse"
           href="#definition"
-          aria-expanded="false"
+          aria-expanded="true"
           aria-controls="collapseDefinition"
         >
           Definition
@@ -25,7 +25,7 @@
           type="button"
           data-toggle="collapse"
           href="#category"
-          aria-expanded="false"
+          aria-expanded="true"
           aria-controls="collapseCategory"
         >
           Catégories
@@ -36,7 +36,7 @@
           type="button"
           data-toggle="collapse"
           href="#raffinementMorphologique"
-          aria-expanded="false"
+          aria-expanded="true"
           aria-controls="collapseRaffinementMorphologique"
         >
           Raffinnements morphologiques
@@ -47,7 +47,7 @@
           type="button"
           data-toggle="collapse"
           href="#raffinementSemantique"
-          aria-expanded="false"
+          aria-expanded="true"
           aria-controls="collapseRaffinementSemantique"
         >
           Raffinnements sémantiques
@@ -58,7 +58,7 @@
           type="button"
           data-toggle="collapse"
           href="#lemme"
-          aria-expanded="false"
+          aria-expanded="true"
           aria-controls="collapseLemme"
         >
           Lemme
@@ -69,7 +69,7 @@
           type="button"
           data-toggle="collapse"
           href="#PPasse"
-          aria-expanded="false"
+          aria-expanded="true"
           aria-controls="collapsePPasse"
         >
           Participe passé
@@ -80,7 +80,7 @@
           type="button"
           data-toggle="collapse"
           href="#PPresent"
-          aria-expanded="false"
+          aria-expanded="true"
           aria-controls="collapsePPresent"
         >
           Participe présent
@@ -92,7 +92,7 @@
           type="button"
           data-toggle="collapse"
           href="#InformationsLexicales"
-          aria-expanded="false"
+          aria-expanded="true"
           aria-controls="collapseInformationsLexicales"
         >
           Informations Lexicales
@@ -104,7 +104,7 @@
           type="button"
           data-toggle="collapse"
           href="#ideeAssociation"
-          aria-expanded="false"
+          aria-expanded="true"
           aria-controls="collapseIdeeAssociation"
         >
           Association d'idées
@@ -115,7 +115,7 @@
           type="button"
           data-toggle="collapse"
           href="#domaine"
-          aria-expanded="false"
+          aria-expanded="true"
           aria-controls="collapseDomaine"
         >
           Domaines/Thèmes
@@ -126,7 +126,7 @@
           type="button"
           data-toggle="collapse"
           href="#generiques"
-          aria-expanded="false"
+          aria-expanded="true"
           aria-controls="collapseGeneriques"
         >
           Génériques
@@ -137,7 +137,7 @@
           type="button"
           data-toggle="collapse"
           href="#synonyme"
-          aria-expanded="false"
+          aria-expanded="true"
           aria-controls="collapseSynonyme"
         >
           Synonymes
@@ -147,7 +147,7 @@
 
     <div class="col-md-8">
       <div class="box definition">
-        <div class="collapse" id="definition">
+        <div class="collapse" [ngClass]="{show: definition}" id="definition">
           <div class="card card-body">
             <h5 class="card-title">Définition</h5>
             <p class="card-text">{{ definition }}</p>
@@ -156,7 +156,7 @@
       </div>
 
       <div class="box category">
-        <div class="collapse" id="category">
+        <div class="collapse" [ngClass]="{show: containsRelationType(4)}" id="category">
           <div class="card card-body">
             <h5 class="card-title">Catégories</h5>
             <p>
@@ -180,7 +180,7 @@
       </div>
 
       <div class="box morphologique">
-        <div class="collapse" id="raffinementMorphologique">
+        <div class="collapse" [ngClass]="{show: containsRelationType(2)}" id="raffinementMorphologique">
           <div class="card card-body">
             <h5 class="card-title">Raffinements Morphologiques</h5>
             <p>
@@ -228,7 +228,7 @@
       </div>
 
       <div class="box semantique">
-        <div class="collapse" id="raffinementSemantique">
+        <div class="collapse" [ngClass]="{show: containsRelationType(1)}" id="raffinementSemantique">
           <div class="card card-body">
             <h5 class="card-title">Raffinements Sémantiques</h5>
             <p>
@@ -276,7 +276,7 @@
       </div>
 
       <div class="box lemme">
-        <div class="collapse" id="lemme">
+        <div class="collapse" [ngClass]="{show: containsRelationType(19)}" id="lemme">
           <div class="card card-body">
             <h5 class="card-title">Lemme</h5>
             <ng-container *ngFor="let word of words; let i = index">
@@ -298,7 +298,7 @@
       </div>
 
       <div class="box PPasse">
-        <div class="collapse" id="PPasse">
+        <div class="collapse" [ngClass]="{show: containsRelationType(77)}" id="PPasse">
           <div class="card card-body">
             <h5 class="card-title">Participe passé</h5>
             <ng-container *ngFor="let word of words; let i = index">
@@ -320,7 +320,7 @@
       </div>
 
       <div class="box PPresent">
-        <div class="collapse" id="PPresent">
+        <div class="collapse" [ngClass]="{show: containsRelationType(79)}" id="PPresent">
           <div class="card card-body">
             <h5 class="card-title">Participe présent</h5>
             <ng-container *ngFor="let word of words; let i = index">
@@ -342,7 +342,7 @@
       </div>
 
       <div class="box InformationsLexicales">
-        <div class="collapse" id="InformationsLexicales">
+        <div class="collapse" [ngClass]="{show: containsRelationType(18)}" id="InformationsLexicales">
           <div class="card card-body">
             <h5 class="card-title">Informations Lexicales</h5>
             <ng-container *ngFor="let word of words; let i = index">
@@ -364,7 +364,7 @@
       </div>
 
       <div class="box IdeeAssociation">
-        <div class="collapse" id="ideeAssociation">
+        <div class="collapse" [ngClass]="{show: containsRelationType(0)}" id="ideeAssociation">
           <div class="card card-body">
             <h5 class="card-title">Associations d'idées</h5>
             <ng-container *ngFor="let word of words; let i = index">
@@ -389,7 +389,7 @@
       </div>
 
       <div class="box domaine">
-        <div class="collapse" id="domaine">
+        <div class="collapse" [ngClass]="{show: containsRelationType(3)}" id="domaine">
           <div class="card card-body">
             <h5 class="card-title">Domaines/Thèmes</h5>
             <ng-container *ngFor="let word of words; let i = index">
@@ -414,7 +414,7 @@
       </div>
 
       <div class="box Generiques">
-        <div class="collapse" id="generiques">
+        <div class="collapse" [ngClass]="{show: containsRelationType(6)}" id="generiques">
           <div class="card card-body">
             <h5 class="card-title">Génériques</h5>
             <ng-container *ngFor="let word of words; let i = index">
@@ -440,7 +440,7 @@
       </div>
 
       <div class="box Synonyme">
-        <div class="collapse" id="synonyme">
+        <div class="collapse" [ngClass]="{show: containsRelationType(5)}" id="synonyme">
           <div class="card card-body">
             <h5 class="card-title">Synonymes</h5>
             <ng-container *ngFor="let word of words; let i = index">
