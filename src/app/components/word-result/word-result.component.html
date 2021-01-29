@@ -1,9 +1,7 @@
-<div class="row mt-3">
+<div class="row mt-3 words-content">
   <div class="row justify-content-center spinner">
     <ng-container *ngIf="isLoading">
-      
-        <mat-spinner></mat-spinner>
-
+      <mat-spinner></mat-spinner>
     </ng-container>
   </div>
 
@@ -121,6 +119,17 @@
           aria-controls="collapseDomaine"
         >
           Domaines/Thèmes
+        </button>
+        <button
+          *ngIf="containsRelationType(6)"
+          class="btn btn-primary"
+          type="button"
+          data-toggle="collapse"
+          href="#generiques"
+          aria-expanded="false"
+          aria-controls="collapseGeneriques"
+        >
+          Génériques
         </button>
         <button
           *ngIf="containsRelationType(5)"
@@ -404,6 +413,32 @@
         </div>
       </div>
 
+      <div class="box Generiques">
+        <div class="collapse" id="generiques">
+          <div class="card card-body">
+            <h5 class="card-title">Génériques</h5>
+            <ng-container *ngFor="let word of words; let i = index">
+              <ng-container
+                class="card-text"
+                *ngIf="word.r_type == 6 && word.poids > 0"
+              >
+                <a
+                  [routerLink]="[
+                    '/find/definition/',
+                    convertToFormatedName(word.r_node2)
+                  ]"
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="id: {{ word.r_node2 }}, poids: {{ word.poids }}"
+                >
+                  {{ convertToFormatedName(word.r_node2) }}
+                </a>
+              </ng-container>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+
       <div class="box Synonyme">
         <div class="collapse" id="synonyme">
           <div class="card card-body">
@@ -435,7 +470,5 @@
     <ng-container *ngIf="words.length == 0 && !isLoading">
       <h1>Pas de résultat possible pour cette motif</h1>
     </ng-container>
-
   </div>
-  
 </div>

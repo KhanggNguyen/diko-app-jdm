@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Title } from "@angular/platform-browser";
-import { ActivatedRoute, Params } from "@angular/router";
+import { ActivatedRoute, Router, Params } from "@angular/router";
 import { WordService } from "../../services/word.service";
 import * as $ from 'jquery';
 
@@ -19,14 +19,18 @@ export class WordResultComponent implements OnInit {
   constructor(
     private wordService: WordService,
     private route: ActivatedRoute,
-    private titleService: Title
+    private titleService: Title,
+    private router: Router
   ) {}
 
   ngOnInit() {
     let motif = "";
     let rel = "";
+    
     this.route.queryParams.subscribe((params) => {
+      
       if (params.word && params.rel) {
+        this.isLoading = true;
         motif = params.word;
         rel = params.rel;
         this.wordService
@@ -45,7 +49,9 @@ export class WordResultComponent implements OnInit {
     });
 
     this.route.params.subscribe((params: Params) => {
+      
       if (params["word"] != undefined) {
+        this.isLoading = true;
         this.setTitle(params["word"]);
         this.wordService
           .sendGetRequest(params["word"], "")
@@ -95,9 +101,9 @@ export class WordResultComponent implements OnInit {
       if(et["eid"] == r_node2 && et["formated_name"]){
         if(this.requireFormatedName(et["name"])){
           name = et["formated_name"];
-        }else{
-          name = et["name"];
         }
+      }else if(et["eid"] == r_node2 && !et["formated_name"] && et["name"]){
+        name = et["name"];
       }
     });
     return name;
