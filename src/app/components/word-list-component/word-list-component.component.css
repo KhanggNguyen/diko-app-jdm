@@ -1,3 +1,10 @@
 .a-style {
   white-space: pre-line;
 }
+
+.spinner{
+  margin-top: 3em;
+  width:100%;
+  place-items: center;
+}
+

@@ -20,3 +20,10 @@ div.box {
 .box a {
     display:inline;
 }
+
+.spinner{
+  margin-top: 3em;
+  width:100%;
+  place-items: center;
+}
+

@@ -12,6 +12,7 @@ export class WordListComponentComponent implements OnInit {
   words = [];
   rel_type = [];
   ent_type = [];
+  isLoading = true;
   constructor(
     private wordService: WordService,
     private route: ActivatedRoute,
@@ -27,7 +28,8 @@ export class WordListComponentComponent implements OnInit {
           .sendGetWordsListRequest(params["word"])
           .subscribe( (data: []) => {
             this.words = data;
-            this.wordService.sendMessage(data);       
+            this.wordService.sendMessage(data);    
+            this.isLoading = false;   
           });
       }
     });
@@ -42,6 +44,7 @@ export class WordListComponentComponent implements OnInit {
             this.rel_type = data["rel_type"];
             this.ent_type = data["entite_type"];
             this.wordService.sendMessage(data);
+            this.isLoading = false;
           })
       }
     })

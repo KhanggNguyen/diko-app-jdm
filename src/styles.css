@@ -22,3 +22,7 @@
 .cdk-overlay-container {
   z-index: 9999 !important;
 }
+
+.mat-progress-spinner circle, .mat-spinner circle {
+  stroke: #ff88f9!important;
+}

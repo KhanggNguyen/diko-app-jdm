@@ -1,7 +1,9 @@
 <div class="row mt-3">
-  <div class="row justify-content-center">
+  <div class="row justify-content-center spinner">
     <ng-container *ngIf="isLoading">
-      <mat-spinner></mat-spinner>
+      
+        <mat-spinner></mat-spinner>
+
     </ng-container>
   </div>
 
@@ -15,9 +17,10 @@
     </p>
   </ng-container>
 
-  <div class="row justify-content-center">
+  <div class="row justify-content-center spinner">
     <ng-container *ngIf="words.length == 0 && !isLoading">
-      <p>Pas de résultat possible pour cette motif</p>
+      <h1>Pas de résultat possible pour cette motif</h1>
     </ng-container>
+
   </div>
 </div>

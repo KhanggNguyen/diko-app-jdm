@@ -60,10 +60,14 @@ app.get("/definition/:mot/:rel?", async (req, res) => {
   let code = $("code");
   let def = $("def");
   let array_string = code.text().split("\n");
-  let eid = array_string[1].substring(
-    array_string[1].lastIndexOf("=")+1,
-    array_string[1].lastIndexOf(")")
-  );
+  let eid = "";
+  if(array_string[1]){
+    eid = array_string[1].substring(
+      array_string[1].lastIndexOf("=")+1,
+      array_string[1].lastIndexOf(")")
+    );
+  }
+  
   for (i = 0; i < array_string.length; i++) {
     array_temp = array_string[i].split(";");
     
