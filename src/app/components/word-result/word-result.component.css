@@ -14,17 +14,17 @@ div.box {
 
 .btn[aria-expanded="true"] {
   color: #000000;
-  background-color: #f765a9;
+  background-color: #ff6cb5;
 }
 
 .btn:focus{
-  background-color: #f85de3;
+  background-color: #ff7aed;
   outline:0;
   color:black;
 }
 
 .btn-primary:not(:disabled):not(.disabled):active{
-  background-color: #e633ce;
+  background-color: #ff49e7;
   color:black;
   outline: 0;
   box-shadow: 0 0 0 0;

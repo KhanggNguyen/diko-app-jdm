@@ -10,6 +10,7 @@ import * as $ from 'jquery';
   styleUrls: ["./word-result.component.css"],
 })
 export class WordResultComponent implements OnInit {
+  motif = "";
   words = [];
   rel_type = [];
   ent_type = [];
@@ -33,6 +34,8 @@ export class WordResultComponent implements OnInit {
         this.isLoading = true;
         motif = params.word;
         rel = params.rel;
+        this.setTitle(params.word);
+        this.motif = motif;
         this.wordService
           .sendGetRequest(params.word, params.rel)
           .subscribe((data: []) => {
@@ -53,6 +56,7 @@ export class WordResultComponent implements OnInit {
       if (params["word"] != undefined) {
         this.isLoading = true;
         this.setTitle(params["word"]);
+        this.motif = params["word"];
         this.wordService
           .sendGetRequest(params["word"], "")
           .subscribe((data: []) => {
