@@ -1,4 +1,4 @@
 export const environment = {
-  apiJDMUrl: '/',
+  apiJDMUrl: 'https://jdm-server.onrender.com/',
   production: true
 };

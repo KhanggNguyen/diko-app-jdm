@@ -71,13 +71,11 @@ export class SearchComponent implements OnInit {
   }
 
   onChange(event: any): void {
-    setTimeout(() => {
       if (this.searchValue.length >= 4) {
         this.wordService.getWords(this.searchValue).subscribe((data: []) => {
           this.words = data;
         });
       }
-    },1000);
     
   }
 
