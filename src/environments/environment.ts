@@ -3,8 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  apiJDMUrl: 'http://localhost:3000/',
-  production: false
+  apiJDMUrl: 'https://jdm-server.onrender.com/',
+  production: true
 };
 
 /*
